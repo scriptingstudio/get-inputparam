@@ -19,15 +19,15 @@ Bash does not have any "blackbox" solution for input parsing. Neither getopt nor
 
 ## Usage
 #### Command line schema: 
-~~~sh
+```sh
 $ <script> -<parameter> [<argument> <argument>...]...
-~~~
+```
 #### Function usage:
-~~~sh
+```sh
 get-inputparam [-d] <parameter_definition_array_name> -|<output_variable_prefix> "{@}"
-~~~
+```
 #### Input:
-$1 — switch <code>-d</code> to check for duplicates of input parameters. Optional.
+$1 — switch `-d` to check for duplicates of input parameters. Optional.
 
 $1 — parameter definition array name (just name, not value!). Mandatory.
 
@@ -37,26 +37,22 @@ $3 — input parameters. Mandatory.
 #### Output: 
 Variables named by parameters.
 #### Error messages:
-<table>
-<th>Reason</th> <th>Message</th>
-</tr></thead>
-<tr><td>Parameter duplicates found</td> <td><i>WARNING: Duplicate input parameter(s) '&lt;name list&gt;'</i></td></tr>
-<tr><td>Undefined parameter found</td> <td><i>WARNING: Unknown parameter '&lt;name&gt;'</i></td></tr>
-<tr><td>Definition array not found</td> <td><i>ERROR: Parameter definitions not found</i></td></tr>
-<tr><td>Intersection conflict found</td> <td><i>ERROR: Ambitious parameter '&lt;input&gt;' =&gt; '&lt;parameter name&gt;'</i></td></tr>
-</table>
+| Reason | Message |
+|:-------|:--------|
+| Parameter duplicates found | *WARNING: Duplicate input parameter(s) '\<name list\>'* |
+| Undefined parameter found | *WARNING: Unknown parameter '\<name\>'* |
+| Definition array not found | *ERROR: Parameter definitions not found* |
+| Intersection conflict found | *ERROR: Ambitious parameter '\<input\>' =\> '\<parameter name\>'* |
 
 ## Demo play to learn
 Download get-inputparam-function.sh script and play with parameters.
 
-Enter <code>-na</code> to see how expansion works.
+Enter `-na` to see how expansion works.
 
-Enter <code>-com</code> to see how intersection works.
+Enter `-com` to see how intersection works.
 
-Enter <code>-comp</code> to see how exact name coincidence works.
+Enter `-comp` to see how exact name coincidence works.
 
-Change prefix, variable <code>px</code>, with your choice to see output varnames.
+Change prefix, variable `px`, with your choice to see output varnames.
 
-Remove/leave switch <code>-d</code> to play with duplicates of input.
-
-
+Remove/leave switch `-d` to play with duplicates of input.
