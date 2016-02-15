@@ -44,6 +44,48 @@ Variables named by parameters.
 | Definition array not found | *ERROR: Parameter definitions not found* |
 | Intersection conflict found | *ERROR: Ambitious parameter '\<input\>' =\> '\<parameter name\>'* |
 
+## Parameter definition block
+#### Schema
+```sh
+<block_name>=(
+	<param_name>[|<synonym>...][=<default_value>]
+	...
+	<param_name>[|<synonym>...][=<default_value>]
+) 
+```
+
+#### Explanation
+
+Definition block is regular shell array.
+
+Each line is separate array text element which can contain any expression like variables and commands.
+
+Character '|' is a delimiter of param names (synonyms).
+
+Character '=' is a delimiter of param name and its default value if any.
+
+If default value is an array it should be enclosed in single quotes.
+
+```
+params=(
+    name=$(echo $USER)
+    'computer|host|comp'=$(hostname)
+    company
+    class
+    lang='(en de pl)'
+    log=myscript.txt
+    'help|?'
+    run
+)
+```
+In the example above,
+
+* parameter 'name' has a default value as an expression
+
+* parameter 'computer' has synonyms delimited by '|' and a default value as an expression
+
+* parameter 'lang' is assigned a default value as an array
+
 ## Demo play to learn
 Download get-inputparam-function.sh script and play with parameters.
 
