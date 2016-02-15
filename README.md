@@ -66,7 +66,7 @@ Character '=' is a delimiter of param name and its default value if any.
 
 If default value is an array it should be enclosed in single quotes.
 
-```
+```sh
 params=(
     name=$(echo $USER)
     'computer|host|comp'=$(hostname)
