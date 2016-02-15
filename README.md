@@ -39,10 +39,10 @@ Variables named by parameters.
 #### Error messages:
 | Reason | Message |
 |:-------|:--------|
-| Parameter duplicates found | *WARNING: Duplicate input parameter(s) '\<name list\>'* |
-| Undefined parameter found | *WARNING: Unknown parameter '\<name\>'* |
-| Definition array not found | *ERROR: Parameter definitions not found* |
-| Intersection conflict found | *ERROR: Ambitious parameter '\<input\>' =\> '\<parameter name\>'* |
+| Parameter duplicates found | *WARNING: Duplicate input parameter(s) '\<name list\>'.* |
+| Undefined parameter found | *WARNING: Unknown parameter '\<name\>'.* |
+| Definition array not found | *ERROR: Parameter definitions not found.* |
+| Intersection conflict found | *ERROR: Ambitious parameter '\<input\>' =\> '\<parameter name\>'.* |
 
 ## Parameter definition block
 #### Schema
@@ -69,7 +69,7 @@ If default value is an array it should be enclosed in single quotes.
 ```sh
 params=(
     name=$(echo $USER)
-    'computer|host|comp'=$(hostname)
+    'computer|host'=$(hostname)
     company
     class
     lang='(en de pl)'
@@ -80,14 +80,16 @@ params=(
 ```
 In the example above,
 
-* parameter 'name' has a default value as an expression
+* parameter `name` has a default value as an expression;
 
-* parameter 'computer' has synonyms delimited by '|' and a default value as an expression
+* parameter `computer` has synonyms delimited by '|' and a default value as an expression;
 
-* parameter 'lang' is assigned a default value as an array
+* parameter `lang` is assigned a default value as an array;
+
+* parameter `log` is assigned a string type default value.
 
 ## Demo play to learn
-Download get-inputparam-function.sh script and play with parameters.
+Download *get-inputparam-function.sh* script and play with parameters.
 
 Enter `-na` to see how expansion works.
 
