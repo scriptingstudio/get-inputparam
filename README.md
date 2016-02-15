@@ -2,7 +2,7 @@
 
 ***Get-inputparam*** is a simple powershell-like input **named** parameter parser for shell scripts implemented as a function.
 
-## Description
+## Why?
 Bash does not have any "blackbox" solution for input parsing. Neither getopt nor getopts have that simplicity and power in input processing like Powershell. Having been vastly experienced in Powershell I did need the solution for my shell scripts. I got it of "hundred" lines.
 
 ## Features
