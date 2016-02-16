@@ -84,6 +84,18 @@ function get-inputparam () {
 		inputparam=''
 	done # END parsing
 	
+#	if [[ "$mandatory" ]]; then # check for mandatory parameters
+#		m=$( comm -3 -2 -i <(printf '%s\n' "${mandatory[@]}" | sort -u) <(printf '%s\n' "${inputp[@]}" | sort -u) )
+#		echo "$m"
+#		if [[ "$m" ]]; then
+#			m=${m/$'\n'/ }; mandatory=()
+#			for i in $m; do
+#				[[ "${!i}" == '' ]] && mandatory+=("$i")
+#			done
+#			[[ "$mandatory" ]] && 
+#			{ echo "ERROR: Missing mandatory parameter(s) '${mandatory[@]}'."; exit 1; }
+#		fi
+#	fi
 	[[ $ignore -eq 0 ]] && return # check for input duplicates
 	local dup=$( comm -1 -3 -i <(printf '%s\n' "${inputp[@]}" | sort -u) <(printf '%s\n' "${inputp[@]}" | sort) )
 	if [[ "$dup" ]]; then 
