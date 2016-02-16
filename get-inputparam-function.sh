@@ -40,9 +40,11 @@ function get-inputparam () {
 
 	[[ "$param" == '' ]] && { echo "ERROR: Parameter definitions not found."; exit 1; }
 	for i in "${param[@]}"; do # initialize output vars
+#		m=0; [[ "${i:0:1}" == '+' ]] && { i=${i:1}; m=1; }
 		defarg=() # default param's value
 		[[ "${i#*=}" != "$i" ]] && defarg="${i#*=}" # split name/val
 		i="${i%=*}"; i=$prefix"${i%%|*}" # extract first synonym
+#		[[ $m -eq 1 ]] && mandatory+=("$i")
 		if [[ "$defarg" ]]; then
 			[[ "${defarg:0:1}" == '(' && "${defarg:(-1)}" == ')' ]] &&
 				defarg=(${defarg:1:${#defarg}-2})
@@ -51,6 +53,7 @@ function get-inputparam () {
 			eval $i=''
 		fi
 	done # END init
+#	[[ "$mandatory" ]] && param=("${param[@]#+}")
 	
 	while [ "$#" != 0 ]; do
 		if [[ "${1:0:1}" == "-" ]]; then 
