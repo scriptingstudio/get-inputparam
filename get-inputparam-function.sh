@@ -1,14 +1,13 @@
 #!/bin/bash
 
 function get-inputparam () {
-	__find-param () { # parameter definition array parser
-		local par="$1"; local ret=''; local val=''; 
-		local m=0 local dup='' i
+		local par="$1" ret='' val=''
+		local m=0 dup='' i
 		[[ -z "$par" ]] && return
 		for i in "${param[@]}"; do
 			val='' # default param's value
 			[[ "${i#*=}" != "$i" ]] && val="${i#*=}" # split  name/val
-			i="${i%=*}"; i="${i//|/ }"
+			i="${i%=*}"; i="${i//|/ }";
 			for s in $i; do	# test names (synonyms)
 				if [[ "$s" == "$par" ]]; then # exact matching; last wins
 					if [[ -n $val ]]; then
@@ -28,10 +27,10 @@ function get-inputparam () {
 		done
 		echo $ret
 	} # END scriptblock
-	local pargs=(); local defarg=(); local inputparam=''; local inputp=()
-	local prefix=''; local ignore=1 mandatory=() m
+	local pargs=() defarg=() inputparam='' inputp=()
+	local prefix='' param ignore=1 mandatory=() m
 	[[ "$1" == '-d' ]] && { ignore=0; shift; }
-	local param=$1[@]; param=("${!param}"); shift
+	param=$1[@]; param=("${!param}"); shift
 	if [[ "$1" == '-' ]]; then 
 		shift 
 	elif [[ "${1:0:1}" != '-' ]]; then 
@@ -96,6 +95,7 @@ function get-inputparam () {
 #			{ echo "ERROR: Missing mandatory parameter(s) '${mandatory[@]}'."; exit 1; }
 #		fi
 #	fi
+	
 	[[ $ignore -eq 0 ]] && return # check for input duplicates
 	local dup=$( comm -1 -3 -i <(printf '%s\n' "${inputp[@]}" | sort -u) <(printf '%s\n' "${inputp[@]}" | sort) )
 	if [[ "$dup" ]]; then 
