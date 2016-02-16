@@ -2,7 +2,8 @@
 
 function get-inputparam () {
 	__find-param () { # parameter definition array parser
-		local par="$1"; local ret=''; local val=''; local m=0; local dup=''
+		local par="$1"; local ret=''; local val=''; 
+		local m=0 local dup='' i
 		[[ -z "$par" ]] && return
 		for i in "${param[@]}"; do
 			val='' # default param's value
@@ -28,7 +29,7 @@ function get-inputparam () {
 		echo $ret
 	} # END scriptblock
 	local pargs=(); local defarg=(); local inputparam=''; local inputp=()
-	local prefix=''; local ignore=1
+	local prefix=''; local ignore=1 mandatory=() m
 	[[ "$1" == '-d' ]] && { ignore=0; shift; }
 	local param=$1[@]; param=("${!param}"); shift
 	if [[ "$1" == '-' ]]; then 
@@ -112,7 +113,7 @@ printf "$demo_fmt1" '---------' '---------' '---' '-------' '----------'
 for i in "${params[@]}"; do
     demo_def=' '; [[ "${i#*=}" != "$i" ]] && demo_def="${i#*=}"; 
     [[ "$demo_def" != ' ' ]] && demo_def='yes'
-    i="${i%=*}"; i="${i%|*}"; 
+    i="${i%=*}"; i="${i%%|*}"; 
     demo_name=$px$i[@]; demo_arr=("${!demo_name}"); demo_s="${demo_arr[@]}"
     demo_d=${#demo_arr[@]}; [[ $demo_s == '' ]] && demo_d=' '
     [[ $demo_d -gt 1 ]] && demo_s="($demo_s)"
