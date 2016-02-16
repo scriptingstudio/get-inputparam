@@ -8,6 +8,7 @@ Bash does not have any "blackbox" solution for input parsing. Neither getopt nor
 ## Features
 * Powershell-like syntax schema and processing.
 * "Blackbox" input processor.
+* Parameter name of any length.
 * Input parameter name maps on to output variable.
 * Input parameter optional duplication: conflict detection or last wins.
 * Input parameter expansion. You can type a few first letters of a parameter (shortcut), the processor will expand it to the full name.
@@ -15,6 +16,8 @@ Bash does not have any "blackbox" solution for input parsing. Neither getopt nor
 * Parameter synonyms. The first syn of definition is an output varname.
 * Parameter default value. Default value can be an array.
 * Optional output variable prefix. This prefix will be added to all variable names.
+
+## Notes
 * Tested in Mac OS X.
 
 ## Usage
