@@ -1,4 +1,4 @@
-# Get-inputparam for shell
+# Get-inputparam
 
 ***Get-inputparam*** is a simple powershell-like input **named** parameter parser for shell scripts implemented as a function.
 
