@@ -31,16 +31,18 @@ $ <script> -<parameter> [<argument> <argument>...]...
 ```sh
 get-inputparam [-d] <parameter_definition_array_name> -|<output_variable_prefix> "{@}"
 ```
+
 #### Input:
-$1 — switch `-d` to check for duplicates of input parameters. Optional.
+| Argument | Description | Required |
+|:---------|:------------|:---------|
+| $1 | Switch `-d` to check for duplicates of input parameters. Put it before parameter definition array name. | Optional |
+| $1 | Parameter definition array name (just name, not value!) | Mandatory |
+| $2 | Output variable prefix. To omit prefix use argument `'-'`. | Mandatory |
+| $3 | Input arguments, i.e. `"${@}"`. | Mandatory |
 
-$1 — parameter definition array name (just name, not value!). Mandatory.
-
-$2 — output variable prefix. To omit prefix use '-'. Mandatory.
-
-$3 — input parameters. Mandatory. 
 #### Output: 
-Variables named by parameters.
+Variables named by parameters. If an output variable is assigned `true` that means it is called in command line and the parameter does not have a predefined value.
+
 #### Error messages:
 | Reason | Message |
 |:-------|:--------|
@@ -61,15 +63,13 @@ Variables named by parameters.
 
 #### Explanation
 
-Definition block is regular shell array.
+* Definition block is regular shell array.
+* Each line is separate array text element which can contain any expression like variables and commands.
+* Character '|' (pipe) is a delimiter of param names (synonyms). **Note:** if there are synonyms this parameter line must be quoted.
+* Character '=' is a delimiter of param name and its default value if any.
+* If default value is an array it should be enclosed in single quotes.
 
-Each line is separate array text element which can contain any expression like variables and commands.
-
-Character '|' is a delimiter of param names (synonyms).
-
-Character '=' is a delimiter of param name and its default value if any.
-
-If default value is an array it should be enclosed in single quotes.
+#### Example
 
 ```sh
 params=(
@@ -78,7 +78,7 @@ params=(
     company
     class
     lang='(en de pl)'
-    log=myscript.txt
+    log=myscript.log
     'help|?'
     run
 )
