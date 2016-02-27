@@ -41,7 +41,7 @@ get-inputparam [-d] <parameter_definition_array_name> -|<output_variable_prefix>
 | $3 | Input arguments, i.e. `"${@}"`. | Mandatory |
 
 #### Output: 
-Variables named by parameters. If an output variable is assigned `true` that means it is called in command line and the parameter does not have a predefined value.
+Variables named by parameters. If an output variable is assigned value `true` that means the parameter is called in command line and it did not have a predefined value.
 
 #### Error messages:
 | Reason | Message |
