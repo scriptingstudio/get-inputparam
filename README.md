@@ -8,7 +8,6 @@ Bash does not have any "blackbox" solution for input parsing. Neither getopt nor
 ## Features
 * Powershell-like syntax schema and processing.
 * "Blackbox" input processor.
-* Parameter name of any length.
 * Input parameter name maps on to output variable.
 * Input parameter optional duplication: conflict detection or last wins.
 * Input parameter expansion. You can type a few first letters of a parameter (shortcut), the processor will expand it to the full name.
