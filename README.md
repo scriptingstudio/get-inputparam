@@ -20,18 +20,18 @@ Bash does not have any "blackbox" solution for input parsing. Neither getopt nor
 * Tested in Mac OS X.
 
 ## Usage
-#### Command line schema:
+#### Command line schema
 Powershell terminology is used.
 
 ```sh
 $ <script> -<parameter> [<argument> <argument>...]...
 ```
-#### Function usage:
+#### Function usage
 ```sh
 get-inputparam [-d] <parameter_definition_array_name> -|<output_variable_prefix> "{@}"
 ```
 
-#### Input:
+#### Input
 | Argument | Description | Required |
 |:---------|:------------|:---------|
 | $1 | Switch `-d` to check for duplicates of input parameters. Put it before parameter definition array name. | Optional |
@@ -39,10 +39,10 @@ get-inputparam [-d] <parameter_definition_array_name> -|<output_variable_prefix>
 | $2 | Output variable prefix. To omit prefix use argument `'-'`. | Mandatory |
 | $3 | Input arguments, i.e. `"${@}"`. | Mandatory |
 
-#### Output: 
+#### Output
 Variables named by parameters. If an output variable is assigned value `true` that means the parameter is called in command line and it did not have a predefined value.
 
-#### Error messages:
+#### Error messages
 | Reason | Message |
 |:-------|:--------|
 | Parameter duplicates found | *WARNING: Duplicate input parameter(s) '\<name list\>'.* |
